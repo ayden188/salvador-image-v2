@@ -1,0 +1,353 @@
+:root {
+    --font-main: 'Inter','Montserrat', sans-serif;
+    --font:#fafafa;
+    --title-color:#0f0f0f;
+    --title-second:#494848;
+    --border-color:#af9a3e;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-main);
+  background-color: var(--font);
+}
+.title{
+   font-family: "Great Vibes";
+  font-weight: 400;
+  font-size: 9rem;
+  font-style: normal;
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.subtitle{
+    animation: fadeIn 1.5s ease-out;
+    font-size: 1.3rem;
+    font-family: 'Inter';
+font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding-right: 40px;
+}
+h1, h2, h3{
+    font-family: 'Inter';
+
+}
+
+nav{
+    padding: 25px;
+z-index: 10;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgb(255, 255, 255,0.2);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(48, 48, 48, 0.052);
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+nav ul li{
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: rgb(22, 22, 22); 
+       padding:5px  0px;
+       transition: 0.4s background;
+}
+nav ul li a:hover{
+    border-bottom: 2px solid var(--border-color);
+    color: #999
+}
+.hero{
+    animation: fadeIn 1.5s ease-out;
+    width: 100%;
+    text-align: center;
+    margin-top: 130px;
+    padding: 30px;
+}
+.hero h3{
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color:var(--title-second);
+    letter-spacing: 3px;
+}
+.hero button  {
+    cursor: pointer;
+   margin-top: 30px;
+    padding: 12px 30px;
+    border: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    color: rgb(18, 17, 17);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+.bt4{ 
+     background: #000;
+    color: #fff;
+ cursor: pointer;
+   margin-top: 10px;
+    padding: 18px 30px;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(18, 17, 17);
+    background: transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+.bt4:hover{
+background: #000;
+    color: #fff;
+}
+
+.hero button:hover  {
+  background: #000;
+    color: #fff;
+}
+.infinite-scroll{
+margin-top: 40px;
+    padding: 10px;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    color:black;
+    mask-image: linear-gradient(to right,transparent, black 10%,black 90%,  transparent);
+    -webkit-mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent) ;
+}
+.wraper{
+    display: flex;
+    white-space: nowrap;
+    animation: moveTexte  25s linear infinite;
+}
+
+@keyframes moveTexte{
+0%{
+    transform: translateX(0);
+}
+100%{
+    transform: translateX(-50%);
+}
+}
+.infinite-scroll:hover .wraper{
+    animation-play-state: paused;
+    
+}
+
+.galerie{
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+}
+.galerie .subtitle{
+    font-size: 2.4rem;
+    margin-left: 40px;
+    margin-bottom: 50px;
+}
+ .images{
+    column-width: 300px;
+    column-gap: 15px;
+padding: 10px;
+width: 100%;
+}
+
+.images img{
+    opacity: 0;
+    transform: translateY(50px);
+
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    break-inside: avoid;
+    transition:all 1s;
+    filter: grayscale(80%); 
+}
+.images img.apper{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.images img:hover{
+    transform: scale(1.02);
+    cursor: zoom-in;
+        filter: grayscale(0%); 
+
+}
+
+.horizontal-scroll-section {
+    height: 400vh; 
+    background: #000;
+}
+
+.sticky-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.parallax-gallery {
+    display: flex;
+    padding-left: 10vw;
+    gap: 20vw;
+    will-change: transform;
+}
+
+.photo-item {
+    position: relative;
+    flex-shrink: 0;
+    width: 40vw; 
+}
+
+.photo-item img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    filter: grayscale(10%) contrast(1.1);
+}
+
+
+.her1 {
+    height: 100vh; 
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('pexels-alex-andrews-271121-1203803.WebP');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.btn-explore {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+.btn-explore:hover {
+    background: white;
+    color: black;
+}
+
+
+.separator-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 80px 0;
+    padding: 0 10%;
+    overflow: hidden;
+}
+
+.line {
+    height: 1px;
+    background-color: #000;
+    /* Largeur initiale à 0 pour l'animation */
+    width: 0; 
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.separator-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #999;
+    opacity: 0;
+    transition: opacity 1s ease 0.5s;
+}
+
+.separator-container.active .line {
+    width: 100%;
+}
+
+.separator-container.active .separator-text {
+    opacity: 1;
+}
+
+
+.container{
+    margin-top: 40px;
+    padding: 40px; 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.box{
+    display: grid;
+    grid-template-columns: repeat(2, 480px);
+margin: auto;
+}
+.box1 {
+    border-right: 1px solid rgb(186, 186, 186);
+    border-left: 1px solid rgb(186, 186, 186);
+    padding: 20px;
+}
+.box2{
+     border-right: 1px solid rgb(186, 186, 186);
+    padding: 20px;
+
+}
+.box1 .title h1{
+     font-family: "Great Vibes" ;
+    font-size: 5rem;
+  font-weight: 100;
+}
+.box1 .title {
+  font-style: normal;
+  margin-bottom: 40px;
+  padding: 60px;
+  border-bottom: 1px solid rgb(186, 186, 186);
+}
+.bas{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: var(--title-second);
+}
+.box2 span{
+    margin-bottom: 30px;
+}
+.box2{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.box2 input , textarea{
+    padding: 25px 23px ;
+border: 1px solid rgb(186, 186, 186);
+resize: vertical;
+}
+.box2 input:focus ,textarea{
+    outline: none;
+}
