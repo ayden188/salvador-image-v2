@@ -14,6 +14,7 @@
 html {
     scroll-behavior: smooth;
 }
+
 body {
   font-family: var(--font-main);
   background-color: var(--font);
@@ -68,6 +69,7 @@ nav ul li a{
     color: rgb(22, 22, 22); 
        padding:5px  0px;
        transition: 0.4s background;
+       letter-spacing: 2px;
 }
 nav ul li a:hover{
     border-bottom: 2px solid var(--border-color);
@@ -80,6 +82,37 @@ nav ul li a:hover{
     margin-top: 130px;
     padding: 30px;
 }
+
+.link{
+    position: fixed;
+    left: 25px;       
+  top: 50%;        
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+}
+
+.social-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    color: #000;
+    transform: translateX(5px); 
+}
+
+.vertical-line {
+    width: 1px;
+    height: 40px;
+    background-color: #adabab;
+}
+
 .hero h3{
     margin-top: 20px;
     font-size: 1.5rem;
@@ -97,24 +130,6 @@ nav ul li a:hover{
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: 0.4s;
-}
-.bt4{ 
-     background: #000;
-    color: #fff;
- cursor: pointer;
-   margin-top: 10px;
-    padding: 18px 30px;
-    border: 1px solid rgb(0, 0, 0);
-    color: rgb(18, 17, 17);
-    background: transparent;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.4s;
-}
-.bt4:hover{
-background: #000;
-    color: #fff;
 }
 
 .hero button:hover  {
@@ -155,7 +170,7 @@ margin-top: 40px;
     margin-top: 50px;
     text-align: center;
     width: 100%;
-    padding: 20px;
+    padding: 50px;
 }
 .galerie .subtitle{
     font-size: 2.4rem;
@@ -272,7 +287,6 @@ width: 100%;
 .line {
     height: 1px;
     background-color: #000;
-    /* Largeur initiale à 0 pour l'animation */
     width: 0; 
     transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -294,60 +308,327 @@ width: 100%;
 .separator-container.active .separator-text {
     opacity: 1;
 }
-
-
-.container{
-    margin-top: 40px;
-    padding: 40px; 
+.container {
+    width: 100%;
+    padding: 80px 5%; 
     display: flex;
     justify-content: center;
-    width: 100%;
+    box-sizing: border-box;
 }
-.box{
+
+.box {
     display: grid;
-    grid-template-columns: repeat(2, 480px);
-margin: auto;
+    grid-template-columns: 1fr 1fr; 
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
 }
 .box1 {
-    border-right: 1px solid rgb(186, 186, 186);
-    border-left: 1px solid rgb(186, 186, 186);
-    padding: 20px;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.box2{
-     border-right: 1px solid rgb(186, 186, 186);
+
+.box1 .title {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #eee;
+}
+.box1 span{
+     color: #3f3f3f;
+}
+
+.box1 .title h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    line-height: 0.7; 
+    font-weight: 400;
+    margin: 0;
+}
+
+.bas {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- COLONNE DROITE (FORMULAIRE) --- */
+.box2 {
+    border-right: 1px solid #e0e0e0;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.box2 span:first-child {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+
+.box2 input, 
+.box2 textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 18px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #000;
+    transition: all 0.4s ease;
+    border-radius: 0;
+}
+
+.box2 input:focus, 
+.box2 textarea:focus {
+    outline: none;
+    border-bottom: 1px solid #000;
+}
+
+/* --- BOUTON ENVOYER --- */
+.bt4 {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
     padding: 20px;
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 10px;
+}
+
+.bt4:hover {
+    background: transparent;
+    color: #000;
+}
+
+.shared {
+    margin-top: 20px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 992px) {
+    .box {
+        grid-template-columns: 1fr; 
+    }
+    .box2 {
+        border-left: 1px solid #e0e0e0; 
+        padding: 40px;
+    }
+    .box1 {
+        padding: 40px;
+    }
+}
+
+
+
+.services-section {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 60px 8%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden; /* Verrouille la hauteur */
+}
+
+.services-intro {
+    text-align: center;
+    margin-bottom: 40px;
+    flex-shrink: 0;
+}
+
+.cursive-title {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.service-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.7rem;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* --- GRILLE ASYMÉTRIQUE --- */
+.services-grid {
+    display: flex;
+    gap: 25px;
+    flex: 1; /* Remplit l'espace restant */
+    min-height: 0; /* Fix pour flexbox */
+}
+
+.service-item {
+    position: relative;
+    background: #fdfdfd;
+    border: 1px solid    #b1b1b1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1); /* Transition fluide luxe */
+    cursor: pointer;
+}
+
+/* Proportions 1.6 / 1 */
+.service-item.large { flex: 1.6; }
+.service-group-right { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 25px; 
+}
+.service-item.small { flex: 1; }
+
+/* --- CONTENU TEXTE (Z-INDEX 10) --- */
+.service-content {
+    position: relative;
+    z-index: 10;
+    pointer-events: none; /* La souris traverse le texte pour toucher l'item */
+    transition: transform 0.6s ease;
+}
+
+.service-num {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: #bbb;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.service-item h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 10px 0;
+    color: #1a1a1a;
+}
+
+.service-item p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 280px;
+}
+
+/* --- MÉDIAS (CACHÉS PAR DÉFAUT) --- */
+.service-media {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.service-bg, .service-video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.1); /* Prêt pour l'effet de zoom */
+    transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    filter: grayscale(100%);
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* --- EFFETS HOVER (LE MOMENT MAGIQUE) --- */
+.service-item:hover {
+    border-color: transparent;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.service-item:hover .service-bg, 
+.service-item:hover .service-video {
+    opacity: 1;
+    transform: scale(1); /* L'image "recule" ou se stabilise */
+}
+
+.service-item:hover .dark-overlay {
+    opacity: 1;
+}
+
+/* Changement de couleur coordonné */
+.service-item:hover .service-content { transform: translateY(-5px); }
+.service-item:hover h3, 
+.service-item:hover p, 
+.service-item:hover .service-num {
+    color: #ffffff !important;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .services-section { height: auto; max-height: none; padding: 80px 5%; }
+    .services-grid { flex-direction: column; height: auto; }
+    .service-item { min-height: 350px; }
+}
+
+
+.interactive-transition-section {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+        align-items: center;
+    padding: 80px 5%;
+    overflow: hidden; 
 
 }
-.box1 .title h1{
-     font-family: "Great Vibes" ;
-    font-size: 5rem;
-  font-weight: 100;
+
+.interactive-transition-section img{
+position: absolute;
+pointer-events: none;
+height: 150px;
+width: 200px;
+transform: translate(-50%,-50%);
+border-radius: 4px; 
+mix-blend-mode: difference;
+filter: grayscale(100%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-.box1 .title {
-  font-style: normal;
-  margin-bottom: 40px;
-  padding: 60px;
-  border-bottom: 1px solid rgb(186, 186, 186);
+.cursive-transition-title {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(3rem, 7vw, 5rem);
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
 }
-.bas{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    color: var(--title-second);
-}
-.box2 span{
-    margin-bottom: 30px;
-}
-.box2{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.box2 input , textarea{
-    padding: 25px 23px ;
-border: 1px solid rgb(186, 186, 186);
-resize: vertical;
-}
-.box2 input:focus ,textarea{
-    outline: none;
+
+.transition-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 50px;
+    text-align: center;
 }
