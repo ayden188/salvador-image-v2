@@ -112,3 +112,8 @@ function createImage(x, y) {
 
   animation.onfinish = () => img.remove();
 }
+
+const menu = document.querySelector('.nav-links');
+function toggleMenu() {
+    menu.classList.toggle('active');
+}
