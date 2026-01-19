@@ -1,119 +1,142 @@
-const section = document.querySelector('.horizontal-scroll-section');
-const gallery = document.querySelector('.parallax-gallery');
-const items = document.querySelectorAll('.photo-item');
+ 
+document.addEventListener('DOMContentLoaded', () => {
 
-const observer= new IntersectionObserver((entries) =>{
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('apper')
-    }
-  });
-},{threshold:0.1})
-document.querySelectorAll('.images img').forEach(img => observer.observe(img));
+    const mesProjets = [
+        { id: 1, type: 'video', category: 'video', title: 'Cinematic Fashion', src: 'Screen recording 2026-01-18 02.20.01.webm', poster: 'preview1.jpg' },
+        { id: 2, type: 'image', category: 'edito', title: 'Vogue Vision', src: 'salv.Webp' },
+        { id: 3, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
+       { id: 4, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
+        { id: 5, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
+        { id: 6, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
+        { id: 7, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
+        { id: 8, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
+        { id: 10, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
+        { id: 11, type: 'image', category: 'mode', title: 'Urban Soul', src: 'mode.jpeg' },
 
 
+    ];
+
+    function chargerPortfolio() {
+    const grille = document.querySelector('.portfolio-masonry');
+    if (!grille) return;
+
+    grille.innerHTML = ""; 
+
+    mesProjets.forEach((projet, index) => {
+        const card = document.createElement('div');
+        card.className = `portfolio-card ${index >= 15 ? 'hidden' : 'show'}`;
+        card.setAttribute('data-category', projet.category);
+
+        let mediaHTML = "";
+        if (projet.type === 'video') {
+            mediaHTML = `
+                <div class="video-wrapper">
+                    <video muted loop playsinline preload="none" poster="${projet.poster}">
+                        <source src="${projet.src}" type="video/mp4">
+                    </video>
+                </div>`;
+        } else {
+            mediaHTML = `<img src="${projet.src}" alt="${projet.title}" loading="lazy">`;
+        }
+
+        card.innerHTML = `
+            ${mediaHTML}
+            <div class="card-infos">
+                <span>${projet.category.toUpperCase()}</span>
+                <h3>${projet.title}</h3>
+            </div>
+        `;
+        grille.appendChild(card);
+    });
+
+    activerHoverVideo();
+}
+
+    chargerPortfolio();
+    
+const btnLoadMore = document.querySelector('.btn-load');
+
+if (btnLoadMore) {
+    btnLoadMore.addEventListener('click', () => {
+        const projetsCaches = document.querySelectorAll('.portfolio-card.hidden');
+        
+        projetsCaches.forEach((projet, index) => {
+            setTimeout(() => {
+                projet.classList.remove('hidden');
+                projet.classList.add('show');
+            }, index * 50); 
+        });
+        btnLoadMore.style.display = 'none';
+    });
+}
 
 
-const separator = document.querySelector('.separator-container');
-const observerSeparator = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            separator.classList.add('active');
+function activerHoverVideo() {
+    const videoCards = document.querySelectorAll('.portfolio-card');
+
+    videoCards.forEach(card => {
+        const video = card.querySelector('video');
+        
+        if (video) {
+            card.addEventListener('mouseenter', () => {
+                video.play().catch(error => {
+                    console.warn("Lecture bloquée par le navigateur :", error);
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0; 
+            });
         }
     });
-}, { threshold: 0.5 }); 
-
-observerSeparator.observe(separator);
-
-window.addEventListener('scroll', () => {
-    const offsetTop = section.offsetTop;
-    const scrollDistance = window.pageYOffset - offsetTop;
-    const sectionHeight = section.offsetHeight - window.innerHeight;
-    let progress = scrollDistance / sectionHeight;
-
-    progress = Math.max(0, Math.min(1, progress));
-
-    const moveX = progress * (gallery.offsetWidth - window.innerWidth + 200);
-    gallery.style.transform = `translateX(-${moveX}px)`;
-
-    items.forEach(item => {
-        const speed = item.getAttribute('data-speed');
-        const x = (scrollDistance * speed);
-        item.querySelector('img').style.transform = `translateX(${x * 0.2}px)`;
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const hoverSpots = document.querySelectorAll('.hover-spot');
-    const mouseFollower = document.getElementById('mouse-follower-image');
-
-    hoverSpots.forEach(spot => {
-        spot.addEventListener('mouseenter', () => {
-            const imageUrl = spot.getAttribute('data-img');
-            mouseFollower.style.backgroundImage = `url('${imageUrl}')`;
-            mouseFollower.style.opacity = 1;
-        });
-
-        spot.addEventListener('mouseleave', () => {
-            mouseFollower.style.opacity = 0;
-        });
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        mouseFollower.style.left = `${e.clientX}px`;
-        mouseFollower.style.top = `${e.clientY}px`;
-    });
-});
-
-
-const trail = document.querySelector('.interactive-transition-section');
-
-const images = [
-  'mode.jpeg',
-  'salv.Webp',
-  'pexels-alex-andrews-271121-1203803.WebP',
-];
-
-// throttle : pour éviter de créer 100 images par seconde (meilleure performance)
-let lastMouseX = 0;
-let lastMouseY = 0;
-
-window.addEventListener("mousemove", (e) => {
-  // On ne crée une image que si la souris a bougé d'au moins 50px
-  const distance = Math.hypot(e.clientX - lastMouseX, e.clientY - lastMouseY);
-  
-  if (distance > 50) {
-    createImage(e.clientX, e.clientY);
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-  }
-});
-
-function createImage(x, y) {
-  const img = document.createElement('img');
-  const RandomIMG = images[Math.floor(Math.random() * images.length)];
-  
-  img.src = RandomIMG;
-  img.classList.add('trail-image'); // Utilisez une classe CSS pour le style de base
-  
-  // Positionnement (Centrer l'image sur le curseur)
-  img.style.left = x + "px";
-  img.style.top = y + "px"; // Correction : c'était "x" dans votre code
-
-  trail.appendChild(img); // Correction : on ajoute l'élément img, pas la string "img"
-
-  // Animation fluide avec Web Animations API (plus performant que setInterval)
-  const animation = img.animate([
-    { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-    { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' }
-  ], {
-    duration: 1000,
-    easing: 'ease-out'
-  });
-
-  animation.onfinish = () => img.remove();
 }
+    const filterContainer = document.querySelector('.portfolio-filters');
+    if (filterContainer) {
+        filterContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
 
-const menu = document.querySelector('.nav-links');
-function toggleMenu() {
-    menu.classList.toggle('active');
-}
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.dataset.filter;
+            const allCards = document.querySelectorAll('.portfolio-card');
+
+            allCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue) {
+                    card.style.display = "block";
+                    setTimeout(() => card.classList.replace('hide', 'show'), 10);
+                } else {
+                    card.classList.replace('show', 'hide');
+                    setTimeout(() => card.style.display = "none", 500); // Attend la fin de l'anim
+                }
+            });
+        });
+    }
+
+    const menu = document.querySelector('.nav-links');
+    window.toggleMenu = function() { 
+        if(menu) menu.classList.toggle('active');
+    };
+
+    function updateTime() {
+        const footerTime = document.getElementById('footer-time');
+        const options = { timeZone: 'Africa/Lome', hour: '2-digit', minute: '2-digit', hour12: false };
+        const now = new Intl.DateTimeFormat('fr-FR', options).format(new Date());
+        if (footerTime) footerTime.innerHTML = `LOMÉ, TG — ${now} GMT`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active'); 
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.portfolio-card, .separator-container').forEach(el => observer.observe(el));
+});

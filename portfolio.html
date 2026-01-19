@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Salvador-Image </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<nav>
+    <ul class="nav-links">
+        <li><a href="">Accueil</a></li>
+         <li><a href="">Portfolio</a></li>
+        <li><a href="about.html">A propos</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+
+    <div class="logo"><img src="signature noir.png" alt="" style="width: 40px;"></div>
+<div class="menu" onclick="toggleMenu()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-bar-icon lucide-chart-bar"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h8"/><path d="M7 11h12"/><path d="M7 6h3"/></svg></div>
+
+</nav>
+<section class="portfolio-container">
+    <div class="portfolio-intro">
+        <h1 class="cursive-title">Sélection de Travaux</h1>
+        <p class="portfolio-stats">+654 PROJETS — 2019/2026</p>
+    </div>
+   <div class="portfolio-filters">
+    <button class="filter-btn active" data-filter="all">Tout</button>
+    <button class="filter-btn" data-filter="mode">Mode</button>
+    <button class="filter-btn" data-filter="video">Vidéo</button>
+    <button class="filter-btn" data-filter="edito">Éditorial</button>
+</div>
+    <div class="portfolio-masonry">
+
+        <div class="portfolio-card wide video-item" data-category="video">
+            <video muted loop playsinline poster="preview1.jpg">
+                <source src="Screen recording 2026-01-18 02.20.01.webm" type="video/mp4">
+            </video>
+            <div class="card-infos">
+                <span>CAMPAGNE 01</span>
+                <h3>Cinematic Fashion</h3>
+            </div>
+        </div>
+
+        <div class="portfolio-card tall">
+            <img src="salv.Webp" alt="Salvador Image">
+            <div class="card-infos">
+                <span>ÉDITORIAL</span>
+                <h3>Vogue Vision</h3>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="mode.jpeg" alt="Salvador Image">
+            <div class="card-infos">
+                <span>LIFESTYLE</span>
+                <h3>Urban Soul</h3>
+            </div>
+        </div>
+
+        <div class="portfolio-card video-item">
+            <video muted loop playsinline>
+                <source src="Screen recording 2026-01-18 02.20.01.webm" type="video/mp4">
+            </video>
+            <div class="card-infos">
+                <span>REELS</span>
+                <h3>Motion Design</h3>
+            </div>
+        </div>
+
+        </div>
+
+    <div class="load-more">
+        <button class="btn-load">VOIR PLUS DE PROJETS</button>
+    </div>
+</section>
+
+
+
+
+
+
+<footer class="footer-studio">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3 class="footer-logo">SALVADOR STUDIO</h3>
+            <p id="footer-time">LOMÉ, TG — 00:00 GMT</p>
+            <p class="copyright">© 2026</p>
+        </div>
+        <div class="footer-col">
+            <div class="footer-links">
+                <a href="#">INSTAGRAM ↗</a>
+                <a href="#">WHATSAPP ↗</a>
+                <a href="#" class="legal">MENTIONS LÉGALES</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
