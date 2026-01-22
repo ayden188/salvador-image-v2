@@ -1,6 +1,6 @@
 /**
- * SALVADOR STUDIO - SCRIPT GLOBAL
- * Gère le Portfolio, le Scroll Parallax, l'Heure, les Filtres et les Animations.
+ * SALVADOR STUDIO - SCRIPT GLOBAL COMPLET
+ * Version Unifiée : Portfolio, Filtres, Parallax, Trail, Time & Animations.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,17 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     /* ==========================================
-       2. MOTEUR DU PORTFOLIO
+       2. MOTEUR ET GÉNÉRATION DU PORTFOLIO
        ========================================== */
     function chargerPortfolio() {
         const grille = document.querySelector('.portfolio-masonry');
         if (!grille) return;
 
-        grille.innerHTML = ""; // Nettoyage de la grille
+        grille.innerHTML = ""; // Nettoyage de sécurité
 
         mesProjets.forEach((projet, index) => {
             const card = document.createElement('div');
-            // Cache après le 15ème projet (index >= 15)
+            // Cache les projets après le 15ème pour le Load More
             card.className = `portfolio-card ${index >= 15 ? 'hidden' : 'show'}`;
             card.setAttribute('data-category', projet.category);
 
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         activerHoverVideo();
-        refreshAnimations();
+        refreshAnimations(); // Active l'observer sur les nouvelles cartes
     }
 
-    // Gestion de la lecture vidéo au survol
+    // Gestion de la lecture vidéo au survol (Play/Pause)
     function activerHoverVideo() {
         document.querySelectorAll('.portfolio-card').forEach(card => {
             const video = card.querySelector('video');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-       3. SYSTÈME DE FILTRES ET "LOAD MORE"
+       3. FILTRES ET BOUTON "LOAD MORE"
        ========================================== */
     const filterContainer = document.querySelector('.portfolio-filters');
     if (filterContainer) {
@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = e.target.closest('.filter-btn');
             if (!btn) return;
 
+            // UI : Bouton actif
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
@@ -118,50 +119,44 @@ document.addEventListener('DOMContentLoaded', () => {
             projetsCaches.forEach((projet, index) => {
                 setTimeout(() => {
                     projet.classList.replace('hidden', 'show');
-                    mainObserver.observe(projet);
+                    mainObserver.observe(projet); // On observe pour l'animation
                 }, index * 80); 
             });
             btnLoadMore.style.display = 'none';
         });
     }
 
-    /* ==========================================
-       4. ANIMATIONS AU SCROLL (OBSERVER)
-       ========================================== */
     const mainObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Gère les images de la galerie (.apper) et les cartes (.active)
                 entry.target.classList.add('apper'); 
                 entry.target.classList.add('active');
-                mainObserver.unobserve(entry.target);
+                mainObserver.unobserve(entry.target); // Une seule fois
             }
         });
     }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
     function refreshAnimations() {
-        const targets = document.querySelectorAll('.images img, .portfolio-card, .separator-container');
+        const targets = document.querySelectorAll('.images img, .portfolio-card, .separator-container ,.separator-text');
         targets.forEach(el => mainObserver.observe(el));
     }
-
-    /* ==========================================
-       5. PARALLAX HORIZONTAL
-       ========================================== */
-    const section = document.querySelector('.horizontal-scroll-section');
-    const gallery = document.querySelector('.parallax-gallery');
+    const sectionHorizontal = document.querySelector('.horizontal-scroll-section');
+    const galleryHorizontal = document.querySelector('.parallax-gallery');
     const photoItems = document.querySelectorAll('.photo-item');
 
-    if (section && gallery) {
+    if (sectionHorizontal && galleryHorizontal) {
         window.addEventListener('scroll', () => {
-            const offsetTop = section.offsetTop;
+            const offsetTop = sectionHorizontal.offsetTop;
             const scrollDistance = window.pageYOffset - offsetTop;
-            const sectionHeight = section.offsetHeight - window.innerHeight;
+            const sectionHeight = sectionHorizontal.offsetHeight - window.innerHeight;
             
             if (scrollDistance >= 0 && scrollDistance <= sectionHeight) {
                 let progress = scrollDistance / sectionHeight;
-                const moveX = progress * (gallery.offsetWidth - window.innerWidth + 200);
-                gallery.style.transform = `translateX(-${moveX}px)`;
+                // Calcul du mouvement X
+                const moveX = progress * (galleryHorizontal.offsetWidth - window.innerWidth + 200);
+                galleryHorizontal.style.transform = `translateX(-${moveX}px)`;
 
+                // Effet de vitesse sur les images individuelles
                 photoItems.forEach(item => {
                     const speed = item.getAttribute('data-speed') || 0.1;
                     const img = item.querySelector('img');
@@ -172,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================
-       6. EFFETS INTERACTIFS (TRAIL)
+       6. TRAIL INTERACTIF (MOUSE MOVE)
        ========================================== */
     const trailSection = document.querySelector('.interactive-transition-section');
     const imagesList = ['mode.jpeg', 'salv.Webp'];
@@ -181,9 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (trailSection) {
         window.addEventListener("mousemove", (e) => {
             const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-            if (dist > 100) { 
+            if (dist > 100) { // Crée une image tous les 100px parcourus
                 createTrailImage(e.clientX, e.clientY);
-                lastX = e.clientX; lastY = e.clientY;
+                lastX = e.clientX; 
+                lastY = e.clientY;
             }
         });
     }
@@ -204,20 +200,76 @@ document.addEventListener('DOMContentLoaded', () => {
         anim.onfinish = () => img.remove();
     }
 
+    /* ==========================================
+       7. UTILITAIRES (HEURE LOMÉ & MENU)
+       ========================================== */
     function updateTime() {
         const timeElements = document.querySelectorAll('#footer-time, .sub1');
         const options = { timeZone: 'Africa/Lome', hour: '2-digit', minute: '2-digit', hour12: false };
         const now = new Intl.DateTimeFormat('fr-FR', options).format(new Date());
+        
         timeElements.forEach(el => {
             if (el) el.innerHTML = `LOMÉ, TG — ${now} GMT`;
         });
     }
 
     const navLinks = document.querySelector('.nav-links');
-    window.toggleMenu = () => navLinks?.classList.toggle('active');
+    window.toggleMenu = () => {
+        if (navLinks) navLinks.classList.toggle('active');
+    };
 
-    chargerPortfolio();
-    refreshAnimations();
-    setInterval(updateTime, 1000);
-    updateTime();
+        const heroSection = document.querySelector('.hero-content');
+    if (heroSection) {
+        setTimeout(() => {
+            heroSection.classList.add('loaded');
+        }, 100);
+    };
+
+
+const targets = document.querySelectorAll('.images img, .portfolio-card, .service-row, .reveal-img-container, .phi-item');
+targets.forEach(el => mainObserver.observe(el));
+
+    chargerPortfolio();     
+    refreshAnimations();   
+    updateTime();           
+    setInterval(updateTime, 1000); 
+
+
+
+
+function reinitScripts() {
+    initHero();           
+    chargerPortfolio();   // Tes projets
+    refreshAnimations();  // Ton Intersection Observer
+    updateTime();         // L'heure de Lomé
+    setActiveLink();      // Ta classe .active
+}
+
+barba.init({
+    transitions: [{
+        name: 'opacity-transition',
+        leave(data) {
+            return gsap.to(data.current.container, {
+                opacity: 0,
+                y: -20,
+                duration: 0.5,
+                ease: "power2.in"
+            });
+        },
+        enter(data) {
+            window.scrollTo(0, 0);
+                        reinitScripts();
+
+            return gsap.from(data.next.container, {
+                opacity: 0,
+                y: 20,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        }
+    }]
+});
+document.addEventListener('DOMContentLoaded', () => {
+    reinitScripts();
+});
 });

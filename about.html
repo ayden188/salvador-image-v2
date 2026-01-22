@@ -12,30 +12,126 @@
     <title>Salvador-Image </title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-barba="wrapper">
 
-
-<header>
 <nav>
-    <ul>
-        <li><a href="index.html">Acceuil</a></li>
-         <li><a href="">Portfolio</a></li>
-        <li><a href="about.html">A propos</a></li>
-        <li><a href="">Contact</a></li>
+    <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+         <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html"  class="activer">A propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
+
+    <div class="logo"><img src="signature noir.png" alt="" style="width: 40px;"></div>
+<div class="menu" onclick="toggleMenu()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-bar-icon lucide-chart-bar"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h8"/><path d="M7 11h12"/><path d="M7 6h3"/></svg></div>
+
 </nav>
 
-   
-<div class="her1">
-    <div class="hero-content">
-        <h1 class="title">Salvador</h1>
-        <p class="subtitle">Là où la technique rencontre l'imaginaire</p>
-        <a href="#galerie" class="btn-explore">Explorer le portfolio</a>
+
+<main data-barba="cointainer" data-barba-namespace="home" > 
+
+
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-visual">
+            <div class="reveal-img-container">
+                <img src="salv.Webp" alt="Salvador Studio" class="about-portrait">
+            </div>
+            <div class="experience-badge">EST. 2019</div>
+        </div>
+
+        <div class="about-content">
+            <span class="section-tag">L'ESSENCE DU STUDIO</span>
+            <h2 class="about-title">Capturer l'invisible, <br>figer l'émotion.</h2>
+            
+            <div class="about-text">
+                <p class="lead">Basé à Lomé, Salvador Studio redéfinit l'esthétique visuelle à travers un regard minimaliste et intemporel.</p>
+                <p>Spécialisé dans la photographie de mode et la réalisation cinématographique, mon approche consiste à chercher l'équilibre parfait entre la lumière naturelle et la structure architecturale.</p>
+            </div>
+
+            <div class="philosophy-grid">
+                <div class="phi-item">
+                    <span class="phi-num">01.</span>
+                    <h4>Vision</h4>
+                    <p>Au-delà de l'image, nous créons des héritages visuels pour les marques qui osent sortir du cadre conventionnel.</p>
+                </div>
+                <div class="phi-item">
+                    <span class="phi-num">02.</span>
+                    <h4>Méthode</h4>
+                    <p>Une collaboration organique où chaque détail technique sert une intention émotionnelle profonde.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</header>
+</section>
+
+<section class="services-detail">
+    <div class="separator-container">
+        <div class="line"></div>
+        <span class="separator-text" style="text-align: center;">Nos Expertises</span>
+        <div class="line"></div>
+    </div>
+
+    <div class="services-list-container">
+        <div class="service-row">
+            <div class="service-type">01 / PHOTO</div>
+            <div class="service-desc">
+                <h3>Éditorial & Mode</h3>
+                <p>Campagnes publicitaires, lookbooks et portraits haute couture. Nous créons des images qui racontent une histoire de marque forte.</p>
+            </div>
+            <div class="service-plus">+</div>
+        </div>
+        <div class="service-row">
+            <div class="service-type">02 / VIDÉO</div>
+            <div class="service-desc">
+                <h3>Film & Storytelling</h3>
+                <p>Publicités cinématiques, vidéos lifestyle et direction artistique. Le mouvement au service de votre message.</p>
+            </div>
+            <div class="service-plus">+</div>
+        </div>
+        <div class="service-row">
+            <div class="service-type">03 / DIRECTION</div>
+            <div class="service-desc">
+                <h3>Conseil Créatif</h3>
+                <p>Accompagnement de A à Z : du concept initial au stylisme, jusqu'au rendu final post-produit.</p>
+            </div>
+            <div class="service-plus">+</div>
+        </div>
+    </div>
+</section>
+
+<section class="about-cta">
+    <div class="cta-content">
+        <h2 class="cursive-title">Prêt à créer l'exceptionnel ?</h2>
+        <a href="contact.html" class="btn-premium-white">Démarrer un projet</a>
+    </div>
+</section>
 
 
+
+</main>
+
+
+
+<footer class="footer-studio">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3 class="footer-logo">SALVADOR STUDIO</h3>
+            <p id="footer-time">LOMÉ, TG — 00:00 GMT</p>
+            <p class="copyright">© 2026</p>
+        </div>
+        <div class="footer-col">
+            <div class="footer-links">
+                <a href="#">INSTAGRAM ↗</a>
+                <a href="#">WHATSAPP ↗</a>
+                <a href="#" class="legal">MENTIONS LÉGALES</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
     
 </body>
 </html>
+<script src="https://unpkg.com/@barba/core"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

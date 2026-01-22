@@ -15,20 +15,22 @@
     <title>Salvador-Image </title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-barba="wrapper">
 <header>
 <nav>
     <ul class="nav-links">
-        <li><a href="">Accueil</a></li>
-         <li><a href="">Portfolio</a></li>
+        <li><a href="index.html">Accueil</a></li>
+         <li><a href=""  class="activer">Portfolio</a></li>
         <li><a href="about.html">A propos</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
 
     <div class="logo"><img src="signature noir.png" alt="" style="width: 40px;"></div>
 <div class="menu" onclick="toggleMenu()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-bar-icon lucide-chart-bar"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h8"/><path d="M7 11h12"/><path d="M7 6h3"/></svg></div>
 
 </nav>
+
+<main data-barba="container" data-barba-namespace="home"> 
 <section class="portfolio-container">
     <div class="portfolio-intro">
         <h1 class="cursive-title">Sélection de Travaux</h1>
@@ -85,6 +87,10 @@
     </div>
 </section>
 
+        </main>
+
+
+
 
 
 
@@ -109,3 +115,5 @@
 <script src="script.js"></script>
 </body>
 </html>
+<script src="https://unpkg.com/@barba/core"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

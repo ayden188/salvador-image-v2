@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Salvador-Image </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-barba="wrapper">
+<header>
+<nav>
+    <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+         <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">A propos</a></li>
+        <li><a href="contact.html" class="activer">Contact</a></li>
+    </ul>
+
+    <div class="logo"><img src="signature noir.png" alt="" style="width: 40px;"></div>
+<div class="menu" onclick="toggleMenu()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-bar-icon lucide-chart-bar"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h8"/><path d="M7 11h12"/><path d="M7 6h3"/></svg></div>
+
+</nav>
+
+<main data-barba="container" data-barba-namespace="home"> 
+<section class="contact-form-section">
+    <div class="contact-form-container">
+        <div class="form-intro">
+            <span class="section-tag">ÉCRIVEZ-NOUS</span>
+            <h2>Envoyer un message</h2>
+            <p>Nous nous engageons à vous répondre dans les 24 heures. Plus vous nous donnez de détails, mieux nous pourrons préparer notre échange.</p>
+        </div>
+
+        <form class="contact-form" action="votre-script-de-traitement.php" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Nom Complet" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Adresse Email" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone" placeholder="Numéro de Téléphone (optionnel)">
+            </div>
+            <div class="form-group">
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Service recherché...</option>
+                    <option value="photographie_mode">Photographie de Mode</option>
+                    <option value="videographie_lifestyle">Vidéographie Lifestyle</option>
+                    <option value="branding_visuel">Branding Visuel</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" rows="6" placeholder="Décrivez votre projet et vos attentes..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Envoyer le message</button>
+        </form>
+    </div>
+</section>
+
+<section class="contact-info-map">
+    <div class="contact-info-container">
+        <div class="info-details">
+            <span class="section-tag">INFORMATIONS CLÉS</span>
+            <h2>Où nous trouver & nous joindre</h2>
+            <div class="info-item">
+                <h3>Adresse du Studio</h3>
+                <p>123 Rue de la Création, Lomé, Togo</p>
+                <a href="https://maps.google.com/?q=Lomé, Togo" target="_blank" class="link-map">Voir sur la carte →</a>
+            </div>
+            <div class="info-item">
+                <h3>Contact Direct</h3>
+                <p>Email: <a href="mailto:contact@salvadorstudio.com">contact@salvadorstudio.com</a></p>
+                <p>Téléphone: <a href="tel:+2289877076">+228 98 77 07 36</a></p>
+            </div>
+            <div class="info-item">
+                <h3>Réseaux Sociaux</h3>
+                <p>Connectons-nous pour plus d'inspiration.</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/salvadorstudio" target="_blank"><img src="icon-instagram.svg" alt="Instagram"></a>
+                    <a href="https://whatsapp.com/salvadorstudio" target="_blank"><img src="icon-whatsapp.svg" alt="WhatsApp"></a>
+                    <a href="https://behance.net/salvadorstudio" target="_blank"><img src="icon-behance.svg" alt="Behance"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.641044680347!2d1.2460558726898272!3d6.178779913412931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e3004e2b2bb5%3A0x7d38dd33ad514ac4!2sSALVADOR%20IMAGE%20STUDIO!5e0!3m2!1sen!2stg!4v1769024694517!5m2!1sen!2stg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+
+
+        </main>
+
+<footer class="footer-studio">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3 class="footer-logo">SALVADOR STUDIO</h3>
+            <p id="footer-time">LOMÉ, TG — 00:00 GMT</p>
+            <p class="copyright">© 2026</p>
+        </div>
+        <div class="footer-col">
+            <div class="footer-links">
+                <a href="#">INSTAGRAM ↗</a>
+                <a href="#">WHATSAPP ↗</a>
+                <a href="#" class="legal">MENTIONS LÉGALES</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
+<script src="https://unpkg.com/@barba/core"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

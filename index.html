@@ -8,21 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
 
 
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <title>Salvador-Image </title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-barba="wrapper">
 <header>
 <nav>
     <ul class="nav-links">
-        <li><a href="">Accueil</a></li>
-         <li><a href="">Portfolio</a></li>
+        <li><a href="" class="activer">Accueil</a></li>
+         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="about.html">A propos</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
     </ul>
 
     <div class="logo"><img src="signature noir.png" alt="" style="width: 40px;"></div>
@@ -30,27 +29,33 @@
 
 </nav>
 
-<div class="hero" style="position: relative;">
-    <h1 class="title">Salvador Image</h1>
-<h3>PHOTOGRAPHE & VIDÉASTE | MODE & LIFESTYLE</h3>
-<button>Explorer le portfolio</button>
 
-<div class="link">
-    <div class="vertical-line"></div>
-        <a href="#" class="social-link" aria-label="Instagram">IG</a>
-        <a href="#" class="social-link" aria-label="WhatsApp">WA</a>
-        <a href="#" class="social-link" aria-label="Behance">BE</a>
+
+<main data-barba="container" data-barba-namespace="home"> 
+<div class="hero">
+    <div class="hero-content">
+        <h1 class="title">Salvador Image</h1>
+        <h3 class="subtitle">PHOTOGRAPHE & VIDÉASTE | MODE  LIFESTYLE</h3>
+        <button class="btn-premium">Explorer le portfolio</button>
+    </div>
+
+    <div class="link">
         <div class="vertical-line"></div>
+        <a href="#" class="social-link">IG</a>
+        <a href="#" class="social-link">WA</a>
+        <a href="#" class="social-link">BE</a>
+        <div class="vertical-line"></div>
+    </div>
+    <div class="mouse-glow"></div>
 </div>
 
-</div>
-</div>
 <div class="separator-container" style="text-align: center;">
     <div class="line"></div>
     <span class="separator-text">Since 2019</span>
     <div class="line"></div>
 </div>
-<main><div class="galerie">
+<main>
+    <div class="galerie">
     <h3 class="subtitle">Galerie</h3>
     <div class="images">
         <img src="mode.jpeg" alt="Photo Portrait " loading="lazy">
@@ -188,6 +193,7 @@
 </section>
 
 
+        </main>
 
 <footer class="footer-studio">
     <div class="footer-container">
@@ -208,3 +214,5 @@
 <script src="script.js"></script>
 </body>
 </html>
+<script src="https://unpkg.com/@barba/core"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
