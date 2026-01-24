@@ -36,6 +36,32 @@ a{
     transform: translateY(30px);
     transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
+.scroll{
+    position: absolute;
+    display: flex;
+    bottom: 50px;
+justify-content: center;
+ height: 44px;
+width: 44px;
+color: var(--title-second);
+animation: scrol 2s ease-in-out infinite;
+}
+
+
+@keyframes scrol{
+    0%{
+        transform: translateY(0px);
+        opacity: 0.8;
+    }
+    50%{
+        transform: translateY(10px);
+    opacity: 1;
+    }
+    100%{
+transform: translateY(0);
+opacity: 0.8;
+    }
+}
 
 .hero-content.loaded h1, 
 .hero-content.loaded h3, 
@@ -91,7 +117,7 @@ a{
       font-size: clamp(0.75rem, 1.1vw, 0.95rem);
           font-family: 'Inter';
     text-transform: uppercase;
-    letter-spacing: 0.38em;
+    letter-spacing: 0.48em;
     margin-top: 1rem;
 }
 h1, h2, h3{
@@ -188,9 +214,7 @@ nav ul li a:hover::after{
 
 .hero h3{
     margin-top: 20px;
-    font-size: clamp(1rem, 3.1vh, 3.3rem);
     color:var(--title-second);
-    letter-spacing: 3px;
 }
 .hero button  {
     cursor: pointer;
@@ -505,6 +529,19 @@ width: 100%;
 }
 
 @media (max-width: 992px) {
+    .galerie h3{
+      font-size: clamp(0.70rem, 1vw, 0.95rem);
+    }
+    .galerie{
+        padding: 30px;
+    }
+    .images{
+        column-count: 2;
+        column-width: auto;
+    }
+    .hero{
+        margin-top: -80px;
+    }
     nav{
         padding: 10px;
         display: flex;
@@ -534,6 +571,9 @@ width: 100%;
     }
     .box1 {
         padding: 40px;
+    }
+    .hero-content{
+        padding: 30px;
     }
 }
 
