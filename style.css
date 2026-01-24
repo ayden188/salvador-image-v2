@@ -1,6 +1,6 @@
 :root {
     --font-main: 'Inter','Montserrat', sans-serif;
-    --font:#fafafa;
+    --font: #f6f3ee;
     --title-color:#0f0f0f;
     --title-second:#494848;
     --border-color:#af9a3e;
@@ -22,6 +22,10 @@ html {
 body {
   font-family: var(--font-main);
   background-color: var(--font);
+}
+
+body::before{
+     content: "";  position: fixed;  inset: 0;  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");  pointer-events: none;  z-index: -1;
 }
 a{
     -webkit-user-select: none; 
@@ -45,27 +49,14 @@ a{
 .hero {
     height: 100vh;
     background-size: cover;
+
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     position: relative;
-    background-color:#fff; 
     background-blend-mode: overlay;
 }
-
-.mouse-glow {
-    position: fixed;
-    top: 0; left: 0;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, rgba(255,255,255,0) 70%);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-
 
 .hero-content {
     text-align: center;
@@ -73,16 +64,8 @@ a{
 }
 
 .btn-premium {
-    margin-top: 30px;
-    padding: 15px 40px;
-    background: transparent;
-    border: 1px solid #000;
     font-family: 'Montserrat', sans-serif;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition:  0.2s ;
-    position: relative;
+    transition: 0.4s;
 }
 
 .btn-premium:hover {
@@ -95,6 +78,9 @@ a{
   font-size: clamp(4rem, 11vw, 9rem);
   font-style: normal;
   animation: fadeIn 1.5s ease-out;
+  margin-bottom: 2rem;
+    color: #111;
+
 }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -102,10 +88,12 @@ a{
 }
 .subtitle{
     animation: fadeIn 1.5s ease-out;
-    font-size: clamp(1rem, 1.9vh, 1.3rem);
-    font-family: 'Inter';
+      font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+          font-family: 'Inter';
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 0.38em;
+    margin-top: 1rem;
+    opacity: 0.55;
 }
 h1, h2, h3{
     font-family: 'Inter';
@@ -125,7 +113,7 @@ nav{
 nav ul{
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
 }
 nav ul li{
     list-style: none;
@@ -141,6 +129,16 @@ nav ul li a{
 }
 .activer{
 color: var(--border-color); 
+}
+
+ nav ul li a.activer::after{
+     content: "";
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: var(--border-color);
+transform: scaleX(1);
 }
 nav ul li a::after{
     content: "";
@@ -197,7 +195,7 @@ nav ul li a:hover::after{
 }
 .hero button  {
     cursor: pointer;
-   margin-top: 45px;
+   margin-top: 65px;
     padding: 12px 30px;
     border: 1px solid rgb(0, 0, 0);
     background: transparent;
@@ -205,7 +203,6 @@ nav ul li a:hover::after{
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.4s;
 }
 
 .hero button:hover  {

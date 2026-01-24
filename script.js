@@ -224,8 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
             heroSection.classList.add('loaded');
         }, 100);
     };
-
-
 const targets = document.querySelectorAll('.images img, .portfolio-card, .service-row, .reveal-img-container, .phi-item');
 targets.forEach(el => mainObserver.observe(el));
 
