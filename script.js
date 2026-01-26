@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (trailSection) {
         window.addEventListener("mousemove", (e) => {
             const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-            if (dist > 100) { // Crée une image tous les 100px parcourus
+            if (dist > 100) { 
                 createTrailImage(e.clientX, e.clientY);
                 lastX = e.clientX; 
                 lastY = e.clientY;

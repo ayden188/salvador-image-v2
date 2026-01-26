@@ -527,17 +527,17 @@ width: 100%;
 .logo{
     display: none;
 }
-
 @media (max-width: 992px) {
     .galerie h3{
       font-size: clamp(0.70rem, 1vw, 0.95rem);
     }
     .galerie{
-        padding: 30px;
+        padding: 15px;
     }
-    .images{
+   .images{
         column-count: 2;
         column-width: auto;
+        column-gap: 5px;
     }
     .hero{
         margin-top: -80px;
@@ -576,8 +576,6 @@ width: 100%;
         padding: 30px;
     }
 }
-
-
 
 .services-section {
     width: 100%;
