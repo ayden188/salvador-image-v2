@@ -528,6 +528,12 @@ width: 100%;
     display: none;
 }
 @media (max-width: 992px) {
+    .separator-text{
+        font-size: 0.4rem;
+    }
+    .hero button{
+        padding: 8px 26px;
+    }
     .galerie h3{
       font-size: clamp(0.70rem, 1vw, 0.95rem);
     }
@@ -573,10 +579,8 @@ width: 100%;
         padding: 40px;
     }
     .hero-content{
-        padding: 30px;
-    }
+        padding: 30px; }
 }
-
 .services-section {
     width: 100%;
     height: 100vh;
@@ -721,6 +725,9 @@ width: 100%;
     .services-section { height: auto; max-height: none; padding: 80px 5%; }
     .services-grid { flex-direction: column; height: auto; }
     .service-item { min-height: 350px; }
+    .scroll{
+        display: none;
+    }
 }
 
 
@@ -896,7 +903,7 @@ background-color: #000;
 .portfolio-stats {
     font-size: 0.7rem;
     letter-spacing: 4px;
-    color: #888;
+    color:  var(--border-color);
 }
 
 .portfolio-masonry {
