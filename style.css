@@ -1,4 +1,14 @@
-:root {
+/* █████╗  ██████╗ ██╗ ██████╗ ███╗   ██╗
+██╔══██╗██╔══██╗██║██╔═══██╗████╗  ██║
+██║  ██║██████╔╝██║██║   ██║██╔██╗ ██║
+██║  ██║██╔══██╗██║██║   ██║██║╚██╗██║
+██████╔╝██║  ██║██║╚██████╔╝██║ ╚████║
+╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝ 
+*/
+  
+  
+  
+  :root {
     --font-main: 'Inter','Montserrat', sans-serif;
     --font: #f6f3ee;
     --title-color:#0f0f0f;
@@ -92,14 +102,17 @@ opacity: 0.8;
 .btn-premium {
     font-family: 'Montserrat', sans-serif;
     transition: 0.4s;
+     background: #000;
+    color: #fff;
 }
 
 .btn-premium:hover {
-    background: #000;
-    color: #fff;
-    transform: translateY(-5px);
+
+    background:transparent;
+    color: black;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}.title{
+}
+.title{
   font-weight: 400;
   font-size: clamp(4rem, 11vw, 9rem);
   font-style: normal;
@@ -221,16 +234,17 @@ nav ul li a:hover::after{
    margin-top: 65px;
     padding: 12px 30px;
     border: 1px solid rgb(0, 0, 0);
-    background: transparent;
-    color: rgb(18, 17, 17);
+    transition: 0.4s;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 2px;
+     background: #000;
+    color: #fff;
 }
 
 .hero button:hover  {
-  background: #000;
-    color: #fff;
+ background: #202020;
+ color: white;
 }
 .infinite-scroll{
 margin-top: 40px;
@@ -561,6 +575,7 @@ width: 100%;
     }
     .logo{
         display: block;
+        z-index: 99999;
     }
     .horizontal-scroll-section{
         display: none;
@@ -1055,7 +1070,7 @@ background-color: #000;
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Intro à gauche, formulaire à droite */
+    grid-template-columns: 1fr 1.2fr; 
     gap: 80px;
     align-items: start;
 }
@@ -1100,6 +1115,9 @@ background-color: #000;
     transition: border-bottom 0.3s ease;
     border-radius: 0; /* Pour Firefox */
 }
+.contact-form select option {
+    margin: 5px;
+}
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
@@ -1113,23 +1131,21 @@ background-color: #000;
     border-bottom: 1px solid #000;
 }
 
-/* Style spécifique pour le select */
 .contact-form select {
-    appearance: none; /* Supprime le style par défaut du navigateur */
+    appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Icône flèche personnalisée */
     background-repeat: no-repeat;
     background-position: right 10px center;
-    padding-right: 30px; /* Espace pour la flèche */
-    color: #666; /* Couleur par défaut */
+    padding-right: 30px;
+    color: #666; 
 }
 
 .contact-form select option {
-    color: #000; /* Assure que les options sont lisibles */
+    color: #000; 
 }
 
-/* Quand une option est sélectionnée et n'est pas la placeholder */
 .contact-form select:not(:checked) { 
     color: #000;
 }
@@ -1156,7 +1172,6 @@ background-color: #000;
     color: #000;
 }
 
-/* CONTACT INFO & MAP SECTION */
 .contact-info-map {
     background: #fdfdfd;
     padding: 100px 5%;
@@ -1166,7 +1181,7 @@ background-color: #000;
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.5fr; /* Infos à gauche, carte à droite */
+    grid-template-columns: 1fr 1.5fr; 
     gap: 80px;
     align-items: start;
 }
@@ -1325,7 +1340,6 @@ background-color: #000;
     font-weight: 600;
 }
 
-/* --- CONTENT STYLE --- */
 .section-tag {
     font-size: 0.7rem;
     letter-spacing: 5px;
@@ -1454,12 +1468,11 @@ background-color: #000;
     color: #fff;
 }
 
-.btn-premium.white:hover {
+.btn-premium-white:hover {
     background: #fff;
     color: #000;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 992px) {
     .about-container {
         grid-template-columns: 1fr;
