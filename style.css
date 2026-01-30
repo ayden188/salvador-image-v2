@@ -132,8 +132,9 @@ opacity: 0.8;
     letter-spacing: 0.48em;
     margin-top: 1rem;
 }
+
 h1, h2, h3{
-    font-family: 'Inter' "Great Vibes";
+    font-family: 'Inter' ;
 
 }
 nav{
@@ -542,7 +543,14 @@ width: 100%;
 .logo{
     display: none;
 }
+@media (max-width: 365px) {
+    h1,h2{
+        font-family: "Great Vibes";
+        line-height: 1;
+    }
+}
 @media (max-width: 992px) {
+
     .separator-text{
         font-size: 0.4rem;
     }
