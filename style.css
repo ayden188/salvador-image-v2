@@ -711,7 +711,8 @@ width: 100%;
     opacity: 0;
     transform: scale(1.1); 
     transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-    filter: grayscale(100%);
+ filter: grayscale(100%);
+
 }
 
 .dark-overlay {
@@ -744,7 +745,6 @@ width: 100%;
 .service-item:hover .service-num {
     color: #ffffff !important;
 }
-
 @media (max-width: 992px) {
     .services-section { height: auto; max-height: none; padding: 80px 5%; }
     .services-grid { flex-direction: column; height: auto; }
@@ -1457,6 +1457,9 @@ background-color: #000;
 .service-row:hover .service-plus {
     transform: rotate(90deg);
 }
+.service-row:hover .service-type { 
+color: #000;
+}
 
 .about-cta {
     padding: 180px 5%;
@@ -1468,7 +1471,7 @@ background-color: #000;
 .about-cta .cursive-title {
     color: #fff;
     font-size: clamp(3rem, 10vw, 7rem);
-    -webkit-text-stroke: 0;
+    -webkit-text-stroke: 3;
     margin-bottom: 50px;
 }
 
@@ -1477,11 +1480,6 @@ background-color: #000;
     color: #fff;
     text-decoration: none;
 }
-
-.btn-premium-white:hover {
-
-}
-
 @media (max-width: 992px) {
     .about-container {
         grid-template-columns: 1fr;

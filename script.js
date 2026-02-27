@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mesProjets.forEach((projet, index) => {
             const card = document.createElement('div');
-            // Cache les projets après le 15ème pour le Load More
             card.className = `portfolio-card ${index >= 15 ? 'hidden' : 'show'}`;
             card.setAttribute('data-category', projet.category);
 
@@ -152,11 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (scrollDistance >= 0 && scrollDistance <= sectionHeight) {
                 let progress = scrollDistance / sectionHeight;
-                // Calcul du mouvement X
                 const moveX = progress * (galleryHorizontal.offsetWidth - window.innerWidth + 200);
                 galleryHorizontal.style.transform = `translateX(-${moveX}px)`;
-
-                // Effet de vitesse sur les images individuelles
                 photoItems.forEach(item => {
                     const speed = item.getAttribute('data-speed') || 0.1;
                     const img = item.querySelector('img');
