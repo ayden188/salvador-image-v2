@@ -545,7 +545,6 @@ width: 100%;
 }
 @media (max-width: 365px) {
     h1,h2{
-        font-family: "Great Vibes";
         line-height: 1;
     }
 }
@@ -1453,7 +1452,6 @@ background-color: #000;
     color: var(--border-color);
     transition: transform 0.4s ease;
 }
-
 .service-row:hover .service-plus {
     transform: rotate(90deg);
 }
