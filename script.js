@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const grille = document.querySelector('.portfolio-masonry');
         if (!grille) return;
 
-        grille.innerHTML = ""; // Nettoyage de sécurité
+        grille.innerHTML = ""; 
 
         mesProjets.forEach((projet, index) => {
             const card = document.createElement('div');
@@ -61,18 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         activerHoverVideo();
-        refreshAnimations(); // Active l'observer sur les nouvelles cartes
+        refreshAnimations(); 
     }
 
-    // Gestion de la lecture vidéo au survol (Play/Pause)
     function activerHoverVideo() {
         document.querySelectorAll('.portfolio-card').forEach(card => {
             const video = card.querySelector('video');
             if (video) {
-                card.addEventListener('mouseenter', () => video.play().catch(() => {}));
+                card.addEventListener('mouseenter', () => video.play().catch(() => { }));
                 card.addEventListener('mouseleave', () => {
                     video.pause();
-                    video.currentTime = 0; 
+                    video.currentTime = 0;
                 });
             }
         });
@@ -87,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = e.target.closest('.filter-btn');
             if (!btn) return;
 
-            // UI : Bouton actif
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
@@ -119,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     projet.classList.replace('hidden', 'show');
                     mainObserver.observe(projet); // On observe pour l'animation
-                }, index * 80); 
+                }, index * 80);
             });
             btnLoadMore.style.display = 'none';
         });
@@ -128,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('apper'); 
+                entry.target.classList.add('apper');
                 entry.target.classList.add('active');
                 mainObserver.unobserve(entry.target); // Une seule fois
             }
@@ -148,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const offsetTop = sectionHorizontal.offsetTop;
             const scrollDistance = window.pageYOffset - offsetTop;
             const sectionHeight = sectionHorizontal.offsetHeight - window.innerHeight;
-            
+
             if (scrollDistance >= 0 && scrollDistance <= sectionHeight) {
                 let progress = scrollDistance / sectionHeight;
                 const moveX = progress * (galleryHorizontal.offsetWidth - window.innerWidth + 200);
@@ -156,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 photoItems.forEach(item => {
                     const speed = item.getAttribute('data-speed') || 0.1;
                     const img = item.querySelector('img');
-                    if(img) img.style.transform = `translateX(${scrollDistance * speed * 0.2}px)`;
+                    if (img) img.style.transform = `translateX(${scrollDistance * speed * 0.2}px)`;
                 });
             }
         });
@@ -172,9 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (trailSection) {
         window.addEventListener("mousemove", (e) => {
             const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-            if (dist > 100) { 
+            if (dist > 100) {
                 createTrailImage(e.clientX, e.clientY);
-                lastX = e.clientX; 
+                lastX = e.clientX;
                 lastY = e.clientY;
             }
         });
@@ -203,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeElements = document.querySelectorAll('#footer-time, .sub1');
         const options = { timeZone: 'Africa/Lome', hour: '2-digit', minute: '2-digit', hour12: false };
         const now = new Intl.DateTimeFormat('fr-FR', options).format(new Date());
-        
+
         timeElements.forEach(el => {
             if (el) el.innerHTML = `LOMÉ, TG — ${now} GMT`;
         });
@@ -214,56 +212,87 @@ document.addEventListener('DOMContentLoaded', () => {
         if (navLinks) navLinks.classList.toggle('active');
     };
 
-        const heroSection = document.querySelector('.hero-content');
+    const heroSection = document.querySelector('.hero-content');
     if (heroSection) {
         setTimeout(() => {
             heroSection.classList.add('loaded');
         }, 100);
     };
-const targets = document.querySelectorAll('.images img, .portfolio-card, .service-row, .reveal-img-container, .phi-item');
-targets.forEach(el => mainObserver.observe(el));
+    const targets = document.querySelectorAll('.images img, .portfolio-card, .service-row, .reveal-img-container, .phi-item');
+    targets.forEach(el => mainObserver.observe(el));
 
-    chargerPortfolio();     
-    refreshAnimations();   
-    updateTime();           
-    setInterval(updateTime, 1000); 
-
-
+    chargerPortfolio();
+    refreshAnimations();
+    updateTime();
+    setInterval(updateTime, 1000);
 
 
-function reinitScripts() {
-    initHero();           
-    chargerPortfolio();   // Tes projets
-    refreshAnimations();  // Ton Intersection Observer
-    updateTime();         // L'heure de Lomé
-    setActiveLink();      // Ta classe .active
-}
 
-barba.init({
-    transitions: [{
-        name: 'opacity-transition',
-        leave(data) {
-            return gsap.to(data.current.container, {
-                opacity: 0,
-                y: -20,
-                duration: 0.5,
-                ease: "power2.in"
-            });
-        },
-        enter(data) {
-            window.scrollTo(0, 0);
-                        reinitScripts();
 
-            return gsap.from(data.next.container, {
-                opacity: 0,
-                y: 20,
-                duration: 0.5,
-                ease: "power2.out"
-            });
-        }
-    }]
+    function reinitScripts() {
+        initHero();
+        chargerPortfolio();   // Tes projets
+        refreshAnimations();  // Ton Intersection Observer
+        updateTime();         // L'heure de Lomé
+        setActiveLink();      // Ta classe .active
+    }
+
+    barba.init({
+        transitions: [{
+            name: 'opacity-transition',
+            leave(data) {
+                return gsap.to(data.current.container, {
+                    opacity: 0,
+                    y: -20,
+                    duration: 0.5,
+                    ease: "power2.in"
+                });
+            },
+            enter(data) {
+                window.scrollTo(0, 0);
+                reinitScripts();
+
+                return gsap.from(data.next.container, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            }
+        }]
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        reinitScripts();
+    });
 });
-document.addEventListener('DOMContentLoaded', () => {
-    reinitScripts();
+
+// ..................modal//
+
+const  lesIMG=document.querySelectorAll(".images img")
+const modal =document.querySelector('.modal')
+const closeBtn=document.querySelector('.close')
+const modalImg = modal.querySelector("img");
+
+lesIMG.forEach(image => {
+    image.addEventListener('click',()=>{
+        modal.classList.add('open')
+        modalImg.src=image.src
+        document.body.style.overflow='hidden'
+    })
 });
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("open");
+  document.body.style.overflow = 'auto';
 });
+document.addEventListener('keydown',(e)=>{
+    if (e.key='Escape' && modal.classList.contains('open')) {
+        modal.classList.remove('open')
+   document.body.style.overflow = 'auto';
+    }
+})
+modal.addEventListener('click',(e)=>{
+    if (e.target= modal && modal.classList.contains('open')) {
+        modal.classList.remove('open')
+        document.body.style.overflow = 'auto';
+    }
+})
